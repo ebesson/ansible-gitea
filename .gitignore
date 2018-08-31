@@ -1,0 +1,5 @@
+ansible.cfg
+*.pyc
+.cache
+.molecule
+*.retry
