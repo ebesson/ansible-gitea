@@ -1,0 +1,5 @@
+---
+- name: stop | stop gitea service
+  service:
+    name: gitea
+    state: stopped

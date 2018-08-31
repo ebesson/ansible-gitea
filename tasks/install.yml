@@ -1,0 +1,14 @@
+---
+- name: install | install git
+  apt:
+    name: git
+    state: present
+    update_cache: 'yes'
+
+- name: install | download Gitea
+  get_url:
+    url: "{{ gitea_url }}"
+    dest: "/usr/local/bin/gitea"
+    owner: root
+    group: root
+    mode: 755

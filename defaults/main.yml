@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-gitea
+gitea_state: present
+gitea_working_directory: /var/lib/gitea
