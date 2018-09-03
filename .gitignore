@@ -3,3 +3,5 @@ ansible.cfg
 .cache
 .molecule
 *.retry
+.pytest_cache
+*.log

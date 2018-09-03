@@ -1,0 +1,21 @@
+---
+sudo: required
+language: python
+sudo: required
+cache:
+  pip: true
+before_install:
+  - sudo apt-get -qq update && sudo apt-get remove -y lxd
+  - sudo apt-get -y install snapd
+  - sudo snap install lxd
+  - sudo bash -c 'echo PATH=/snap/bin:$PATH >> /etc/environment'
+  - while [ ! -S /var/snap/lxd/common/lxd/unix.socket ]; do echo "Waiting for LXD socket...";sleep 0.2;done;
+  - sudo lxd init --auto
+  - sudo mkdir -p /var/lib/lxd
+  - sudo ln -s /var/snap/lxd/common/lxd/unix.socket /var/lib/lxd/unix.socket
+install:
+  - sudo pip install molecule==2.11.0
+  - sudo pip install testinfra==1.14.1
+  - sudo pip install pylxd
+script:
+  - sudo molecule test

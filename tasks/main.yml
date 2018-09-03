@@ -1,0 +1,3 @@
+---
+# tasks file for ansible-gitea
+- include: "{{ gitea_state }}.yml"

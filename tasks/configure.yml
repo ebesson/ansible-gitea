@@ -1,0 +1,46 @@
+---
+- name: configure | ensure git group exists
+  group:
+    name: git
+    state: present
+
+- name: configure | ensure git user exists
+  user:
+    name: git
+    shell: /bin/bash
+    group: git
+    home: /home/git
+    system: true
+    state: present
+
+- name: configure | create directory structure
+  file:
+    path: "{{ item }}"
+    owner: git
+    group: git
+    mode: 0750
+    state: directory
+  with_items:
+    - /var/lib/gitea/custom
+    - /var/lib/gitea/data
+    - /var/lib/gitea/indexers
+    - /var/lib/gitea/public
+    - /var/lib/gitea/log
+
+- name: configure | create configuration directory
+  file:
+    path: "/etc/gitea"
+    owner: git
+    group: git
+    mode: 0770
+    state: directory
+
+- name: configure | create systemd configuration
+  template:
+    src: etc/systemd/system/gitea.service.j2
+    dest: /etc/systemd/system/gitea.service
+    owner: root
+    group: root
+    mode: 0655
+  notify:
+    - "restart gitea"
