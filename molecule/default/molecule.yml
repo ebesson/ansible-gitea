@@ -10,6 +10,8 @@ platforms:
     alias: ubuntu/xenial/amd64
   - name: bionic-gitea
     alias: ubuntu/bionic/amd64
+  - name: jessie-gitea
+    alias: debian/jessie/amd64
   - name: stretch-gitea
     alias: debian/stretch/amd64
 provisioner:
