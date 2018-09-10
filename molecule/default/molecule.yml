@@ -8,6 +8,10 @@ lint:
 platforms:
   - name: xenial-gitea
     alias: ubuntu/xenial/amd64
+  - name: bionic-gitea
+    alias: ubuntu/bionic/amd64
+  - name: stretch-gitea
+    alias: debian/stretch/amd64
 provisioner:
   name: ansible
   lint:

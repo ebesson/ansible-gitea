@@ -5,5 +5,5 @@
   tasks:
     - name: Install python for Ansible
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-      become: true
-      changed_when: false
+    - name: Install sudo
+      raw: test -e /usr/bin/sudo  || (apt -y update && apt install -y sudo)
