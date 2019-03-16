@@ -2,6 +2,11 @@
 dist: xenial
 sudo: required
 language: python
+env:
+  matrix:
+    - LXD_DISTRO: debian/stretch/amd64
+    - LXD_DISTRO: ubuntu/bionic/amd64
+    - LXD_DISTRO: ubuntu/xenial/amd64
 cache:
   pip: true
 before_install:
@@ -17,4 +22,4 @@ install:
   - sudo pip install --ignore-installed PyYAML
   - sudo pip install molecule==2.19.0
 script:
-  - sudo molecule test
+  - sudo molecule --debug test

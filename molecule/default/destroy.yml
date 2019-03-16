@@ -11,7 +11,6 @@
   tasks:
     - name: Destroy molecule instance(s)
       lxd_container:
-        name: "{{ item.name }}"
+        name: "gitea"
         state: absent
-        force_stop: "{{ item.force_stop | default(true) }}"
-      with_items: "{{ molecule_yml.platforms }}"
+        force_stop: "true"
