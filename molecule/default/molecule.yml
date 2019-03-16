@@ -6,8 +6,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: bionic-gitea
-    alias: ubuntu/bionic/amd64
   - name: stretch-gitea
     alias: debian/stretch/amd64
 provisioner:
